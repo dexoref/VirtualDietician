@@ -6,6 +6,8 @@ import java.util.UUID;
  * Created by sylveryte on 14/2/16.
  */
 public class DietPlan {
+
+    private DietLab mLab=DietLab.get();
     private UUID b1;
     private UUID b2;
     private UUID b3;
@@ -28,6 +30,7 @@ public class DietPlan {
         generatePlan();
     }
 
+
     private void generatePlan()
     {
         generateBreakfast();
@@ -36,7 +39,7 @@ public class DietPlan {
     }
 
     private void generateDinner() {
-
+        mLab.getBreakfast();
     }
 
     private void generateLunch() {

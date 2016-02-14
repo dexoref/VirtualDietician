@@ -61,7 +61,7 @@ public class User {
         {
             mBMIRemark=ReallyObese;
         }
-        else if (mBMI<24.9)
+        else if (mBMI>39.9)
         {
             mBMIRemark=ExtremelyObese;
         }

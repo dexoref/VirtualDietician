@@ -41,6 +41,9 @@ public class UserFragment extends Fragment {
 
         //updateUI
         name.setText(user.getUserName());
+        Diet diet=(Diet)DietLab.get().getDiets().get(0);
+        name.setText(diet.getDietName());
+
         height.setText(user.getHeight() + "");
         weight.setText(user.getWeight() + "");
         age.setText(user.getAge() + "");
@@ -58,6 +61,8 @@ public class UserFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 user.setUserName(name.getText().toString());
                 user.setHeight(Double.parseDouble(height.getText().toString()));
                 user.setWeight(Double.parseDouble(weight.getText().toString()));

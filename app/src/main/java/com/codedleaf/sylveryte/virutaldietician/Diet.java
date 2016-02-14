@@ -7,13 +7,13 @@ import java.util.UUID;
  */
 public class Diet {
     private String mDietName;
-    private long mCalories;
-    private long mProtien;
-    private long mCarbs;
-    private long mFat;
+    private double mCalories;
+    private double mProtien;
+    private double mCarbs;
+    private double mFat;
     private UUID id;
 
-    public Diet(String dietName,long calories)
+    public Diet(String dietName,double calories)
     {
         mDietName=dietName;
         mCalories=calories;
@@ -32,7 +32,7 @@ public class Diet {
         mDietName = dietName;
     }
 
-    public long getCalories() {
+    public double getCalories() {
         return mCalories;
     }
 
