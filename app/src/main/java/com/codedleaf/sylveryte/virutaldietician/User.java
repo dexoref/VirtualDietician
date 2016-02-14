@@ -77,10 +77,7 @@ public class User {
 
     private User()
     {
-        mUserName="User";
-        mHeight=173;
-        mWeight=56;
-        mAge=20;
+        mUserName="Sylveryte";
         isMale=true;
     }
 

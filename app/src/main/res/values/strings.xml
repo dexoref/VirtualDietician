@@ -14,4 +14,6 @@
     <string name="age">Age</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
+    <string name="gender">Gender</string>
+    <string name="userName">User Name</string>
 </resources>

@@ -1,147 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:gravity="center"
+              android:gravity="center_vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:weightSum="1">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/userDetails"
         android:textStyle="bold"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:layout_margin="30dp"
         />
 
-    <RelativeLayout
-        android:orientation="horizontal"
+    <GridLayout
         android:layout_width="match_parent"
-
-        android:gravity="center"
         android:layout_height="wrap_content"
-        android:weightSum="1">
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:columnCount="2"
+        android:rowCount="6">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User Name"
+            android:text="@string/userName"
             android:id="@+id/textView"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/editTextUserName"
-            android:layout_toStartOf="@+id/editTextUserName"/>
+            android:layout_row="0"
+            android:layout_column="0"/>
 
         <EditText
             android:layout_width="106dp"
             android:layout_height="wrap_content"
             android:id="@+id/editTextUserName"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
+            android:inputType="textPersonName"
+            android:layout_row="0"
+            android:layout_column="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/height"
             android:id="@+id/textView2"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_row="1"
+            android:layout_column="0"/>
 
         <EditText
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:id="@+id/editText_height"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView2"
-            android:layout_toEndOf="@+id/textView2"
-            android:inputType="number|numberSigned|numberDecimal"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
+            android:inputType="number|numberSigned|numberDecimal"
+            android:layout_row="1"
+            android:layout_column="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/weight"
             android:id="@+id/textView3"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_row="2"
+            android:layout_column="0"/>
 
         <EditText
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:id="@+id/editText_weight"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView3"
-            android:layout_toEndOf="@+id/textView3"
-            android:inputType="number|numberSigned|numberDecimal"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
+            android:inputType="number|numberSigned|numberDecimal"
+            android:layout_row="2"
+            android:layout_column="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/age"
             android:id="@+id/textView4"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_row="3"
+            android:layout_column="0"/>
+
+
 
         <EditText
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:id="@+id/editText_age"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView4"
-            android:layout_toEndOf="@+id/textView4"
-            android:inputType="number"/>
-    </RelativeLayout>
+            android:inputType="number"
+            android:layout_row="3"
+            android:layout_column="1"/>
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioGroupMaleFemale"
-        android:layout_gravity="center_horizontal">
-
-        <RadioButton
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/male"
-            android:id="@+id/radioButtonMale"/>
+            android:id="@+id/radioGroupMaleFemale"
+            android:layout_gravity="center_vertical"
+            android:layout_row="4"
+            android:layout_column="1">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female"
+                android:id="@+id/radioButtonFemale"
+                android:layout_gravity="center_horizontal"
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:id="@+id/radioButtonMale"/>
 
-        <RadioButton
+        </RadioGroup>
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/female"
-            android:id="@+id/radioButtonFemale"
-            android:layout_gravity="center_horizontal"/>
-    </RadioGroup>
+            android:text="@string/gender"
+            android:layout_row="4"
+            android:layout_column="0"/>
+
+    </GridLayout>
 
     <Button
-        android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:id="@+id/submitButton"
         android:layout_height="wrap_content"
-        android:text="@string/submit"/>
+        android:text="@string/submit"
+        android:layout_margin="20dp"
+        />
+
 
 </LinearLayout>
