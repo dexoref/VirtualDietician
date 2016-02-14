@@ -41,10 +41,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void startFragment(Fragment fragment) {
-
-
         FragmentManager fm = getSupportFragmentManager();
-
 
         //clean up any fragments blah blah
         List<Fragment> frags=fm.getFragments();
@@ -60,9 +57,6 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
-
-//        if (fragment == null) {
-//            fragment = createFragment();
         fm.beginTransaction()
                     .add(R.id.fragment_main_container, fragment,FRAGMENT_CODE)
                     .commit();

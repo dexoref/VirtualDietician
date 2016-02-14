@@ -23,6 +23,8 @@ public class UserFragment extends Fragment {
         return view;
     }
 
+
+
     public static Fragment newInstance() {
         return new UserFragment();
     }
