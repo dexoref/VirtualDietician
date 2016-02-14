@@ -20,6 +20,9 @@ public class UserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.user_fragment_layout,container,false);
+
+
+
         return view;
     }
 

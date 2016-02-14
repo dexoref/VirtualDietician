@@ -84,6 +84,18 @@ public class User {
         isMale=true;
     }
 
+    public short getBMIRemark() {
+        return mBMIRemark;
+    }
+
+    public double getBMR() {
+        return mBMR;
+    }
+
+    public double getBMI() {
+        return mBMI;
+    }
+
     public String getUserName() {
         return mUserName;
     }
