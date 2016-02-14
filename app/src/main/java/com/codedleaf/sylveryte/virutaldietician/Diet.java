@@ -8,15 +8,16 @@ import java.util.UUID;
 public class Diet {
     private String mDietName;
     private double mCalories;
-    private double mProtien;
-    private double mCarbs;
-    private double mFat;
+    private int mDlb;
+    private int mVen;
     private UUID id;
 
-    public Diet(String dietName,double calories)
+    public Diet(String dietName,double calories,int dlb,int ven)
     {
         mDietName=dietName;
         mCalories=calories;
+        mDlb=dlb;
+        mVen=ven;
         id=UUID.randomUUID();
     }
 
@@ -34,6 +35,14 @@ public class Diet {
 
     public double getCalories() {
         return mCalories;
+    }
+
+    public int getVen() {
+        return mVen;
+    }
+
+    public int getDlb() {
+        return mDlb;
     }
 
     public void setCalories(long calories) {
