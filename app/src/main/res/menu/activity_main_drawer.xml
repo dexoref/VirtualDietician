@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/main_diet_plan"
+            android:icon="@android:drawable/ic_menu_send"
+            android:title="Diet Plan"/>
+        <item
+            android:id="@+id/user_info_edit"
+            android:icon="@android:drawable/ic_menu_send"
+            android:title="User"/>
+        <item
+            android:id="@+id/available_diets"
+            android:icon="@android:drawable/ic_menu_send"
+            android:title="Diets"/>
+        <item
+            android:id="@+id/add_diet"
+            android:icon="@android:drawable/ic_menu_send"
+            android:title="Add own diet"/>
+    </group>
+
+    <item android:title="About">
+        <menu>
+            <item
+                android:icon="@android:drawable/ic_menu_send"
+                android:title="Co5g"/>
+            <item
+                android:icon="@android:drawable/ic_menu_send"
+                android:title="codedleaf"/>
+        </menu>
+    </item>
+
+</menu>

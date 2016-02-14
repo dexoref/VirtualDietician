@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Virutal Dietician</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="appbarheader">Virtual Dietician</string>
+    <string name="appbarheadersubs">codedleaf</string>
+</resources>
