@@ -10,15 +10,23 @@ public class Diet {
     private double mCalories;
     private int mDlb;
     private int mVen;
+    private boolean isUsed;
     private UUID id;
 
-    public Diet(String dietName,double calories,int dlb,int ven)
+    public Diet(UUID newId,String dietName,double calories,int dlb,int ven)
     {
+
         mDietName=dietName;
         mCalories=calories;
         mDlb=dlb;
         mVen=ven;
-        id=UUID.randomUUID();
+        id=newId;
+        isUsed=false;
+    }
+
+    public Diet(String dietName,double calories,int dlb,int ven)
+    {
+        this(UUID.randomUUID(),dietName,calories,dlb,ven);
     }
 
     public UUID getId() {
@@ -35,6 +43,14 @@ public class Diet {
 
     public double getCalories() {
         return mCalories;
+    }
+
+    public boolean isUsed() {
+        return isUsed;
+    }
+
+    public void setIsUsed(boolean isUsed) {
+        this.isUsed = isUsed;
     }
 
     public int getVen() {

@@ -16,4 +16,5 @@
     <string name="male">Male</string>
     <string name="gender">Gender</string>
     <string name="userName">User Name</string>
+    <string name="addDiet">Add Diet</string>
 </resources>

@@ -15,11 +15,14 @@ public class BaseDatabaseFile {
         generateList();
     }
 
-    public static BaseDatabaseFile getInstance() {
-        return sBaseDatabaseFile;
+    public static void generateIntialDB() {
+        if(sBaseDatabaseFile==null)
+        {
+            sBaseDatabaseFile=new BaseDatabaseFile();
+        }
     }
 
-    void generateList()
+    private void generateList()
     {
         mDiets.add(new Diet("Egg boiled",230,41,52));
         mDiets.add(new Diet("Egg Fried",110,41,52));
@@ -33,5 +36,4 @@ public class BaseDatabaseFile {
         mDiets.add(new Diet("Dal (1 cup)",150,45,51));
         mDiets.add(new Diet("fruit (1helping)",150,44,51));
     }
-
 }

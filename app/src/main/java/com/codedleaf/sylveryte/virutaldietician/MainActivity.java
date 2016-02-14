@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+
 
 import java.util.List;
 
@@ -23,6 +23,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        DietLab.createAbsoluteOneCrimeLab(this);
+        DietLab.get().initiateDB();
+        DietLab.get().readDiets();
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -104,7 +110,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.main_diet_plan) {
             startFragment(DietPlanFragment.newInstance());
         } else if (id == R.id.add_diet) {
-
+            startFragment(AddDietFragment.newInstance());
         } else if (id == R.id.available_diets) {
 
         } else if (id == R.id.user_info_edit)  {
@@ -114,5 +120,11 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        DietLab.get().writeDownDiets();
+        super.onDestroy();
     }
 }
