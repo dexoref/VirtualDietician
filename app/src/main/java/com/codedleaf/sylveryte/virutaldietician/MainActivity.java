@@ -2,6 +2,8 @@ package com.codedleaf.sylveryte.virutaldietician;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,8 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final String FRAGMENT_CODE = "codedleafbro";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +35,39 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        startFragment(DietPlanFragment.newInstance());
+
     }
+
+    private void startFragment(Fragment fragment) {
+
+
+        FragmentManager fm = getSupportFragmentManager();
+
+
+        //clean up any fragments blah blah
+        List<Fragment> frags=fm.getFragments();
+        if(frags!=null)
+        {
+
+            for (Fragment frag:frags)
+            {
+                if(frag.getTag().toString().equals(FRAGMENT_CODE))
+                {
+                    fm.beginTransaction().remove(frag).commit();
+                }
+            }
+        }
+
+
+//        if (fragment == null) {
+//            fragment = createFragment();
+        fm.beginTransaction()
+                    .add(R.id.fragment_main_container, fragment,FRAGMENT_CODE)
+                    .commit();
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -70,13 +108,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.main_diet_plan) {
-            // Handle the camera action
+            startFragment(DietPlanFragment.newInstance());
         } else if (id == R.id.add_diet) {
 
         } else if (id == R.id.available_diets) {
 
         } else if (id == R.id.user_info_edit)  {
-
+            startFragment(UserFragment.newInstance());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
