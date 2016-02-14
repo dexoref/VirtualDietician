@@ -30,7 +30,7 @@ public class DietLab {
         mDiets.add(new Diet("ragda fries",74));
         mDiets.add(new Diet("boiled chips",344));
         mDiets.add(new Diet("chiken achhar",54));
-        mDiets.add(new Diet("baingan roti",14));
+        mDiets.add(new Diet("baingan with roti",14));
     }
 
     public List getDiets() {
