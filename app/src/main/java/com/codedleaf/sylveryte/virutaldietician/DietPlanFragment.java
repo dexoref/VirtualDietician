@@ -1,7 +1,9 @@
 package com.codedleaf.sylveryte.virutaldietician;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,9 @@ import java.util.List;
  */
 public class DietPlanFragment extends Fragment {
 
+    private int mTableIndex;
+    private ViewGroup mContainer;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,51 +30,76 @@ public class DietPlanFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.diet_plan_fragment_layout,container,false);
+        mContainer=container;
+        final TableLayout table=(TableLayout)view.findViewById(R.id.tabledietplan);
 
-        TableLayout table=(TableLayout)view.findViewById(R.id.tabledietplan);
 
 
-        int k=0;
-        List<Diet> diets=DietLab.get().getDiets();
-        for (int i=0;i<15&&i<diets.size();i++)
-        {
-            TextView textView=new TextView(getActivity());
-            if(i==0)
-            {
-                textView.setPadding(0,20,0,0);
-                textView.setTextSize(35);
-                textView.setText("Breakfast");
-            }else if(i==5)
-            {
-                textView.setPadding(0,20,0,0);
-                textView.setTextSize(35);
-                textView.setText("lunch");
-            }else if(i==10)
-            {
-                textView.setPadding(0,20,0,0);
-                textView.setTextSize(35);
-                textView.setText("Diner");
-            }else
-            {
-                textView.setPadding(20,10,0,0);
-                textView.setText(String.format("%s\n%s", diets.get(i).getDietName(),diets.get(i).getCalories()));
-            }
-            table.addView(textView,i);
-            k=i;
-        }
+        updateUI(table);
 
-        for (int i=k+1;i<k+2;i++)
-        {
-            TextView textView=new TextView(getActivity());
-                textView.setPadding(0, 10, 0, 0);
-                textView.setTextSize(35);
-                textView.setText("\n");
 
-            table.addView(textView,i);
-
-        }
 
         return view;
+    }
+
+    private void updateUI(TableLayout table) {
+
+        table.clearAnimation();
+        mTableIndex=0;
+        DietPlan dietPlan=DietPlan.getInstance();
+        setTitle("Breakfast", table);
+        setViews(dietPlan.getBreakfast(), table);
+        setTitle("Lunch", table);
+        setViews(dietPlan.getMlunch(), table);
+        setTitle("Dinner", table);
+        setViews(dietPlan.getDinner(), table);
+    }
+
+    private void setViews(List<Diet> diets,TableLayout table) {
+
+
+        LayoutInflater layoutInflater=LayoutInflater.from(getActivity());
+        for (int i=0;i<diets.size();i++) {
+
+            Diet diet=diets.get(i);
+
+            View itemView=layoutInflater.inflate(R.layout.diet_single_list,mContainer,false);
+            TextView mTitleTextView=(TextView)itemView.findViewById(R.id.textViewDietTitle);
+            TextView mDlb=(TextView)itemView.findViewById(R.id.textDlb);
+            TextView mVen=(TextView)itemView.findViewById(R.id.textVen);
+            TextView mCal=(TextView)itemView.findViewById(R.id.textCal);
+
+            //set
+            mTitleTextView.setText(diet.getDietName());
+
+
+
+            mVen.setText(diet.getStringVen());
+            mDlb.setVisibility(TextView.GONE);
+
+            if(diet.getVen()==Diet.VEGETARIAN) {
+                mVen.setTextColor(Color.parseColor("#00FF00"));
+            }
+            if(diet.getVen()==Diet.NONVEGETARIAN)
+            {
+                mVen.setTextColor(Color.parseColor("#FF0000"));
+            }
+            if(diet.getVen()==Diet.EGGETARIAN)
+            {
+                mVen.setTextColor(Color.parseColor("#FFA500"));
+            }
+            mCal.setText(String.format("%s calories", diet.getCalories()));
+
+            table.addView(itemView,mTableIndex++);
+        }
+    }
+
+    private void setTitle(String title,TableLayout table) {
+        TextView textView=new TextView(getActivity());
+        textView.setPadding(0, 20, 0, 0);
+        textView.setTextSize(35);
+        textView.setText(title);
+        table.addView(textView,mTableIndex++);
     }
 
     public static Fragment newInstance() {

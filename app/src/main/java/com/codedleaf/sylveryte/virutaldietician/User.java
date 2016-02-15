@@ -27,6 +27,7 @@ public class User {
     private short mBMIRemark;
     private short mWantTo;
     private static User sUser;
+    private String mBMIStringRemark;
 
 
     public static User getInstance() {
@@ -64,27 +65,37 @@ public class User {
         if(mBMI<18.5)
         {
             mBMIRemark=Underweight;
+            mBMIStringRemark= String.format("You're under weight, your bmi is %.2f", mBMI);
         }
         else if (mBMI<24.9)
         {
             mBMIRemark=NormalWeight;
+            mBMIStringRemark= String.format("You've normal weight, your bmi is %.2f", mBMI);
         }
         else if (mBMI<25.9)
         {
             mBMIRemark=Overweight;
+            mBMIStringRemark= String.format("You're over weight, your bmi is %.2f", mBMI);
         }
         else if (mBMI<34.9)
         {
             mBMIRemark=Obese;
+            mBMIStringRemark= String.format("You're really over weight, your bmi is %.2f", mBMI);
         }
         else if (mBMI<39.9)
         {
             mBMIRemark=ReallyObese;
+            mBMIStringRemark= String.format("You're really really over weight, your bmi is %.2f", mBMI);
         }
         else if (mBMI>39.9)
         {
             mBMIRemark=ExtremelyObese;
+            mBMIStringRemark= "Really :/ this much weight, your bmi is " + mBMI;
         }
+    }
+
+    public String getBMIStringRemark() {
+        return mBMIStringRemark;
     }
 
     private double calculateBMI() {

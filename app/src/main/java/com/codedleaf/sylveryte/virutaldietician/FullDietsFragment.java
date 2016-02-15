@@ -3,13 +3,16 @@ package com.codedleaf.sylveryte.virutaldietician;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -52,6 +55,7 @@ public class FullDietsFragment extends Fragment {
         public TextView mDlb;
         public TextView mVen;
         public TextView mCal;
+        public Button button;
 
         public DietHolder(View itemView)
         {
@@ -61,7 +65,7 @@ public class FullDietsFragment extends Fragment {
             mDlb=(TextView)itemView.findViewById(R.id.textDlb);
             mVen=(TextView)itemView.findViewById(R.id.textVen);
             mCal=(TextView)itemView.findViewById(R.id.textCal);
-
+            button=(Button)itemView.findViewById(R.id.deleteButtonBro);
         }
 
     }
@@ -73,22 +77,46 @@ public class FullDietsFragment extends Fragment {
             mDiets=diets;
         }
 
+
+
         @Override
-        public DietHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public DietHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater=LayoutInflater.from(getActivity());
-            View view=layoutInflater.inflate(R.layout.diet_single_list,parent,false);
+            final View view=layoutInflater.inflate(R.layout.diet_single_list,parent,false);
+
+            view.setLongClickable(true);
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+
+                    Button button=(Button)view.findViewById(R.id.deleteButtonBro);
+                    button.setVisibility(Button.VISIBLE);
+                    return false;
+                }
+            });
+
             return new DietHolder(view);
         }
 
         @Override
         public void onBindViewHolder(DietHolder holder, int position) {
-            Diet diet=mDiets.get(position);
+            final Diet diet=mDiets.get(position);
             holder.mTitleTextView.setText(diet.getDietName());
 
 
 
             holder.mVen.setText(diet.getStringVen());
             holder.mDlb.setText(diet.getStringDlb());
+            holder.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DietLab.get().getDiets().remove(diet);
+                    Toast.makeText(getActivity(),"Diet Deleted Forever",Toast.LENGTH_SHORT);
+                }
+            });
+
+            holder.button.setVisibility(View.GONE);
+
 
             if(diet.getVen()==Diet.VEGETARIAN) {
                 holder.mVen.setTextColor(Color.parseColor("#00FF00"));

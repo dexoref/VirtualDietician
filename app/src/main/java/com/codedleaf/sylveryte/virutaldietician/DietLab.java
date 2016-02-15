@@ -103,7 +103,7 @@ public class DietLab {
         userValues.put(UserTable.cols.AGE,user.getAge());
         userValues.put(UserTable.cols.HEIGHT,user.getHeight());
         userValues.put(UserTable.cols.WEIGHT,user.getWeight());
-        userValues.put(UserTable.cols.GENDER,user.isMale());
+        userValues.put(UserTable.cols.GENDER,user.isMale()?0:1);
         userValues.put(UserTable.cols.WANTTO,user.getWantTo());
 
         mDatabase.insert(UserTable.NAME,null,userValues);
@@ -125,7 +125,42 @@ public class DietLab {
             cursor.close();
         }
 
+        Cursor cursorUser=mDatabase.query(
+                UserTable.NAME,
+                null, // Columns - null selects all columns
+                null,
+                null,
+                null, // groupBy
+                null, // having
+                null // orderBy
+        );
+        try {
+            cursorUser.moveToFirst();
+            if(!cursorUser.isAfterLast()) {
 
+                User user = User.getInstance();
+                user.setUserName(cursorUser.getString(
+                        cursorUser.getColumnIndex(UserTable.cols.NAME)));
+                user.setHeight(cursorUser.getDouble(
+                        cursorUser.getColumnIndex(UserTable.cols.HEIGHT)));
+                user.setWeight(cursorUser.getDouble(
+                        cursorUser.getColumnIndex(UserTable.cols.WEIGHT)));
+                user.setAge(cursorUser.getInt(
+                        cursorUser.getColumnIndex(UserTable.cols.AGE)));
+                int i = cursorUser.getInt(
+                        cursorUser.getColumnIndex(UserTable.cols.GENDER));
+                if (i == 0) {
+                    user.setIsMale(true);
+                } else {
+                    user.setIsMale(false);
+                }
+
+                user.setWantTo(cursorUser.getShort(
+                        cursorUser.getColumnIndex(UserTable.cols.WANTTO)));
+            }
+        }finally {
+            cursorUser.close();
+        }
 
     }
 

@@ -5,13 +5,14 @@ import java.util.UUID;
 /**
  * Created by sylveryte on 14/2/16.
  */
-public class Diet {
+public class Diet implements Comparable{
     private String mDietName;
     private double mCalories;
     private int mDlb;
     private int mVen;
     private boolean isUsed;
     private UUID id;
+    private int mRank;
 
     public static final int BREAKFAST=41;
     public static final int LUNCH=42;
@@ -22,6 +23,12 @@ public class Diet {
     public static final int EGGETARIAN=52;
     public static final int NONVEGETARIAN=53;
 
+    @Override
+    public int compareTo(Object another) {
+        int comparank=((Diet)another).getRank();
+        return comparank-this.getRank();
+    }
+
     public Diet(UUID newId,String dietName,double calories,int dlb,int ven)
     {
 
@@ -31,11 +38,21 @@ public class Diet {
         mVen=ven;
         id=newId;
         isUsed=false;
+        mRank=0;
     }
 
     public Diet(String dietName,double calories,int dlb,int ven)
     {
         this(UUID.randomUUID(),dietName,calories,dlb,ven);
+    }
+
+    public int getRank() {
+        return mRank;
+    }
+
+    public void increaseRank()
+    {
+        mRank++;
     }
 
     public UUID getId() {

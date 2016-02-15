@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,12 @@ public class UserFragment extends Fragment {
         final RadioButton radioButtonF=(RadioButton)view.findViewById(R.id.radioButtonFemale);
         final Button submit=(Button)view.findViewById(R.id.submitButton);
         final Spinner spinnerwant=(Spinner)view.findViewById(R.id.spinnerIwantTo);
+        final Button editButton=(Button)view.findViewById(R.id.editButton);
+        final TextView bmiText=(TextView)view.findViewById(R.id.bmiRemark);
+        final TextView bmrText=(TextView)view.findViewById(R.id.bmrRemark);
 
+
+        updateUi(user, name, height, weight, age, radioButtonM, radioButtonF, spinnerwant,bmiText,bmrText);
 
         //uiCode
         List<String> wantTo=new ArrayList<>();
@@ -50,38 +56,37 @@ public class UserFragment extends Fragment {
         wantTo.add("I want to gain weight.");
         wantTo.add("I want to loose weight.");
         ArrayAdapter<String> dlbAdapter=new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item,wantTo);
+                android.R.layout.simple_spinner_item, wantTo);
         dlbAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerwant.setAdapter(dlbAdapter);
 
-
-        //updateUI
-        name.setText(user.getUserName());
-        Diet diet=(Diet)DietLab.get().getDiets().get(0);
-        name.setText(diet.getDietName());
-        short i=0;
-        if(user.getWantTo()==user.GainWeight)
-        {
-            i=1;
-        }else if(user.getWantTo()==user.LooseWeight)
-        {
-            i=2;
-        }
-        spinnerwant.setSelection(i);
-
-        height.setText(user.getHeight() + "");
-        weight.setText(user.getWeight() + "");
-        age.setText(user.getAge() + "");
-        if(user.isMale())
-        {
-            radioButtonM.setChecked(true);
-        }else
-        {
-            radioButtonF.setChecked(true);
-        }
+        boolean bdis=false;
+        name.setEnabled(bdis);
+        height.setEnabled(bdis);
+        weight.setEnabled(bdis);
+        age.setEnabled(bdis);
+        radioButtonF.setEnabled(bdis);
+        radioButtonM.setEnabled(bdis);
+        spinnerwant.setEnabled(bdis);
+        submit.setVisibility(Button.INVISIBLE);
 
 
 
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submit.setVisibility(Button.VISIBLE);
+                editButton.setVisibility(Button.INVISIBLE);
+                boolean bdis=true;
+                name.setEnabled(bdis);
+                height.setEnabled(bdis);
+                weight.setEnabled(bdis);
+                age.setEnabled(bdis);
+                radioButtonF.setEnabled(bdis);
+                radioButtonM.setEnabled(bdis);
+                spinnerwant.setEnabled(bdis);
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,13 +116,58 @@ public class UserFragment extends Fragment {
                     user.setIsMale(false);
                 }
 
-                user.updateUserCalculation();
+
+                DietLab.get().writeDownDB();
+                submit.setVisibility(Button.INVISIBLE);
+                editButton.setVisibility(Button.VISIBLE);
+                updateUi(user, name, height, weight, age, radioButtonM, radioButtonF, spinnerwant, bmiText, bmrText);
+
+                boolean bdis=false;
+                name.setEnabled(bdis);
+                height.setEnabled(bdis);
+                weight.setEnabled(bdis);
+                age.setEnabled(bdis);
+                radioButtonF.setEnabled(bdis);
+                radioButtonM.setEnabled(bdis);
+                spinnerwant.setEnabled(bdis);
+
             }
         });
 
         return view;
     }
 
+    private void updateUi(User user, EditText name, EditText height, EditText weight, EditText age, RadioButton radioButtonM, RadioButton radioButtonF, Spinner spinnerwant,TextView bmiText,TextView bmrText) {
+
+        //updateUI
+        user.updateUserCalculation();
+
+        bmiText.setText(user.getBMIStringRemark());
+        bmrText.setText(String.format("You must eat %.2f calories everyday.", user.getBMR()));
+
+
+        name.setText(user.getUserName());
+        short i=0;
+        if(user.getWantTo()== User.GainWeight)
+        {
+            i=1;
+        }else if(user.getWantTo()== User.LooseWeight)
+        {
+            i=2;
+        }
+        spinnerwant.setSelection(i);
+
+        height.setText(String.format("%s", user.getHeight()));
+        weight.setText(String.format("%s", user.getWeight()));
+        age.setText(String.format("%d", user.getAge()));
+        if(user.isMale())
+        {
+            radioButtonM.setChecked(true);
+        }else
+        {
+            radioButtonF.setChecked(true);
+        }
+    }
 
 
     public static Fragment newInstance() {
