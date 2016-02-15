@@ -9,6 +9,7 @@
         <item
             android:id="@+id/user_info_edit"
             android:icon="@android:drawable/ic_menu_send"
+            android:checked="true"
             android:title="User"/>
         <item
             android:id="@+id/available_diets"
@@ -24,9 +25,20 @@
         <menu>
             <item
                 android:icon="@android:drawable/ic_menu_send"
-                android:title="Co5g"/>
+                android:checkable="false"
+                android:title="Co6g"/>
+            <item
+                android:checkable="false"
+                android:title="Sezal"/>
+            <item
+                android:checkable="false"
+                android:title="Hozefa"/>
+            <item
+                android:checkable="false"
+                android:title="Wassiyat"/>
             <item
                 android:icon="@android:drawable/ic_menu_send"
+                android:checkable="false"
                 android:title="codedleaf"/>
         </menu>
     </item>
