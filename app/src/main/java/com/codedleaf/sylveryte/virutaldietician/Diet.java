@@ -13,6 +13,15 @@ public class Diet {
     private boolean isUsed;
     private UUID id;
 
+    public static final int BREAKFAST=41;
+    public static final int LUNCH=42;
+    public static final int DINNER=43;
+    public static final int BREAKFASTLUNCH=44;
+    public static final int ANYTIME=45;
+    public static final int VEGETARIAN=51;
+    public static final int EGGETARIAN=52;
+    public static final int NONVEGETARIAN=53;
+
     public Diet(UUID newId,String dietName,double calories,int dlb,int ven)
     {
 
@@ -57,8 +66,39 @@ public class Diet {
         return mVen;
     }
 
+    public String getStringVen() {
+        String s;
+        switch (mVen) {
+            case VEGETARIAN:
+                s= "Vegetarian";
+            break;
+            case EGGETARIAN:
+                s= "Eggetarian";
+            break;
+            case NONVEGETARIAN:
+                s= "Non-Vegetarian";
+            break;
+            default: s="Not Specified";
+        }
+        return s;
+    }
+
+
     public int getDlb() {
         return mDlb;
+    }
+
+    public String getStringDlb() {
+        String s;
+        switch (mDlb)
+        {
+            case BREAKFAST: s="Breakfast"; break;
+            case LUNCH: s="Lunch"; break;
+            case DINNER: s="Dinner"; break;
+            case ANYTIME: s="Anytime"; break;
+            default: s="Anytime"; break;
+        }
+        return s;
     }
 
     public void setCalories(long calories) {

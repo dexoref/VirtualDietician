@@ -61,9 +61,9 @@ public class DietLab {
                 ContentValues();
         values.put(DietTable.cols.UUID,diet.getId().toString());
         values.put(DietTable.cols.TITLE,diet.getDietName());
-        values.put(DietTable.cols.CALORIES, String.format("%s", diet.getCalories()));
-        values.put(DietTable.cols.DLB, String.format("%d", diet.getDlb()));
-        values.put(DietTable.cols.VEN, String.format("%d", diet.getVen()));
+        values.put(DietTable.cols.CALORIES,diet.getCalories());
+        values.put(DietTable.cols.DLB, diet.getDlb());
+        values.put(DietTable.cols.VEN, diet.getVen());
         values.put(DietTable.cols.USED, diet.isUsed() ? 1 : 0);
         return values;
     }
@@ -82,6 +82,9 @@ public class DietLab {
 
     public void writeDownDiets()
     {
+        //clear db
+        mDatabase.execSQL("delete from "+DietTable.NAME);
+        mDatabase.execSQL("vacuum");
 
         for(Diet diet:mDiets)
         {
@@ -105,9 +108,7 @@ public class DietLab {
             cursor.close();
         }
 
-        //clear db
-        mDatabase.execSQL("delete from "+DietTable.NAME);
-        mDatabase.execSQL("vacuum");
+
     }
 
     public Diet getDietById(UUID uuid)

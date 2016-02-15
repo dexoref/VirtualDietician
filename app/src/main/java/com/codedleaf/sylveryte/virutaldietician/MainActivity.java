@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.add_diet) {
             startFragment(AddDietFragment.newInstance());
         } else if (id == R.id.available_diets) {
-
+            startFragment(FullDietsFragment.newInstance());
         } else if (id == R.id.user_info_edit)  {
             startFragment(UserFragment.newInstance());
         }

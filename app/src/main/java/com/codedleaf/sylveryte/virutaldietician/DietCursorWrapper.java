@@ -20,10 +20,10 @@ public class DietCursorWrapper extends CursorWrapper{
     {
         String uuidString=getString(getColumnIndex(DietTable.cols.UUID));
         String title=getString(getColumnIndex(DietTable.cols.TITLE));
-        double calories=Double.parseDouble(getString(getColumnIndex(DietTable.cols.CALORIES)));
-        int dlb=Integer.parseInt(getString(getColumnIndex(DietTable.cols.DLB)));
-        int ven=Integer.parseInt(getString(getColumnIndex(DietTable.cols.VEN)));
-        int used=Integer.parseInt(getString(getColumnIndex(DietTable.cols.USED)));
+        double calories=getDouble(getColumnIndex(DietTable.cols.CALORIES));
+        int dlb=getInt(getColumnIndex(DietTable.cols.DLB));
+        int ven=getInt(getColumnIndex(DietTable.cols.VEN));
+        int used=getInt(getColumnIndex(DietTable.cols.USED));
 
         Diet diet=new Diet(
                 UUID.fromString(uuidString),
