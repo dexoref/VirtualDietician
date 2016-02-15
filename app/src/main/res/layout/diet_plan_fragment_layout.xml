@@ -19,13 +19,22 @@
         android:clickable="false"
         android:layout_gravity="center_horizontal"/>
 
-    <TableLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_weight="0.43"
-        android:id="@+id/tabledietplan">
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:id="@+id/tabledietplan">
+
+        </TableLayout>
+
+    </ScrollView>
 
 
-    </TableLayout>
+
+
+
 </LinearLayout>

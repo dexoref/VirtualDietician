@@ -12,6 +12,10 @@ public class User {
     public static final short Obese=24;
     public static final short ReallyObese=25;
     public static final short ExtremelyObese=26;
+    public static final short GainWeight=81;
+    public static final short NormalUserWeight=80;
+    public static final short LooseWeight=79;
+
 
     private String mUserName;
     private double  mWeight;
@@ -21,7 +25,9 @@ public class User {
     private double mBMR;
     private double mBMI;
     private short mBMIRemark;
+    private short mWantTo;
     private static User sUser;
+
 
     public static User getInstance() {
         if(sUser==null)
@@ -31,12 +37,26 @@ public class User {
         return sUser;
     }
 
+    private User()
+    {
+        mUserName="Sylveryte";
+        isMale=true;
+        mWantTo=NormalUserWeight;
+    }
+
     public void updateUserCalculation()
     {
         mBMR=calculateBMRforMale();
         if(!isMale)
         {
             mBMR-=161;
+        }
+
+        if(mWantTo==GainWeight)
+        {
+            mBMR+=500;
+        }else if (mWantTo == LooseWeight) {
+            mBMR-=500;
         }
 
         //setting bmi and bmi remarks
@@ -75,10 +95,13 @@ public class User {
         return 10 * mWeight + 6.25 * mHeight - 5 * mAge + 5;
     }
 
-    private User()
-    {
-        mUserName="Sylveryte";
-        isMale=true;
+
+    public short getWantTo() {
+        return mWantTo;
+    }
+
+    public void setWantTo(short wantTo) {
+        mWantTo = wantTo;
     }
 
     public short getBMIRemark() {
