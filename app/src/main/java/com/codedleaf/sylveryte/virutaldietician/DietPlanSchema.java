@@ -5,7 +5,7 @@ package com.codedleaf.sylveryte.virutaldietician;
  */
 public class DietPlanSchema {
     public static final class DietPlanTable {
-        public static final String NAME="diets";
+        public static final String NAME="dietplan";
 
         public static final class cols {
             public static final String BREAKFAST="breakfast";

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.codedleaf.sylveryte.virutaldietician.DietTableSchema.DietTable;
+import com.codedleaf.sylveryte.virutaldietician.UserTableSchema.UserTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +81,7 @@ public class DietLab {
         return new DietCursorWrapper(cursor);
     }
 
-    public void writeDownDiets()
+    public void writeDownDB()
     {
         //clear db
         mDatabase.execSQL("delete from "+DietTable.NAME);
@@ -91,10 +92,26 @@ public class DietLab {
             mDatabase.insert(DietTable.NAME,null,getContentValues(diet));
         }
 
+
+        ///USer writing
+        mDatabase.execSQL("delete from " + UserTable.NAME);
+        mDatabase.execSQL("vacuum");
+
+        ContentValues userValues=new ContentValues();
+        User user=User.getInstance();
+        userValues.put(UserTable.cols.NAME,user.getUserName());
+        userValues.put(UserTable.cols.AGE,user.getAge());
+        userValues.put(UserTable.cols.HEIGHT,user.getHeight());
+        userValues.put(UserTable.cols.WEIGHT,user.getWeight());
+        userValues.put(UserTable.cols.GENDER,user.isMale());
+        userValues.put(UserTable.cols.WANTTO,user.getWantTo());
+
+        mDatabase.insert(UserTable.NAME,null,userValues);
+
     }
 
 
-    public void readDiets()
+    public void readDB()
     {
         DietCursorWrapper cursor=queryDiets(null,null);
 
@@ -107,6 +124,7 @@ public class DietLab {
         }finally {
             cursor.close();
         }
+
 
 
     }

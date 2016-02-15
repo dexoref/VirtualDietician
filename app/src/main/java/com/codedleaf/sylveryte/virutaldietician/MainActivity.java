@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
 
         DietLab.createAbsoluteOneCrimeLab(this);
         DietLab.get().initiateDB();
-        DietLab.get().readDiets();
+        DietLab.get().readDB();
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onDestroy() {
-        DietLab.get().writeDownDiets();
+        DietLab.get().writeDownDB();
         super.onDestroy();
     }
 }

@@ -31,7 +31,7 @@ public class DietPlanFragment extends Fragment {
 
         int k=0;
         List<Diet> diets=DietLab.get().getDiets();
-        for (int i=0;i<16&&i<diets.size();i++)
+        for (int i=0;i<15&&i<diets.size();i++)
         {
             TextView textView=new TextView(getActivity());
             if(i==0)
