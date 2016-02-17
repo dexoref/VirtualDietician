@@ -39,6 +39,14 @@ public class UserFragment extends Fragment {
         final EditText height=(EditText)view.findViewById(R.id.editText_height);
         final EditText weight=(EditText)view.findViewById(R.id.editText_weight);
         final EditText age=(EditText)view.findViewById(R.id.editText_age);
+        final RadioGroup radioGroup=(RadioGroup)view.findViewById(R.id.radioGroupMaleFemale);
+
+        final TextView namet=(TextView)view.findViewById(R.id.editTextUserNamet);
+        final TextView heightt=(TextView)view.findViewById(R.id.editText_heightt);
+        final TextView weightt=(TextView)view.findViewById(R.id.editText_weightt);
+        final TextView aget=(TextView)view.findViewById(R.id.editText_aget);
+        final TextView radioGroupt=(TextView)view.findViewById(R.id.radioGroupMaleFemalet);
+
         final RadioButton radioButtonM=(RadioButton)view.findViewById(R.id.radioButtonMale);
         final RadioButton radioButtonF=(RadioButton)view.findViewById(R.id.radioButtonFemale);
         final Button submit=(Button)view.findViewById(R.id.submitButton);
@@ -48,7 +56,10 @@ public class UserFragment extends Fragment {
         final TextView bmrText=(TextView)view.findViewById(R.id.bmrRemark);
 
 
-        updateUi(user, name, height, weight, age, radioButtonM, radioButtonF, spinnerwant,bmiText,bmrText);
+        updateUi(user, name, height, weight, age, radioButtonM, radioButtonF, spinnerwant, bmiText, bmrText,namet,heightt,weightt,aget,radioGroupt);
+
+
+
 
         //uiCode
         List<String> wantTo=new ArrayList<>();
@@ -60,31 +71,30 @@ public class UserFragment extends Fragment {
         dlbAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerwant.setAdapter(dlbAdapter);
 
-        boolean bdis=false;
-        name.setEnabled(bdis);
-        height.setEnabled(bdis);
-        weight.setEnabled(bdis);
-        age.setEnabled(bdis);
-        radioButtonF.setEnabled(bdis);
-        radioButtonM.setEnabled(bdis);
-        spinnerwant.setEnabled(bdis);
-        submit.setVisibility(Button.INVISIBLE);
+
+        spinnerwant.setEnabled(false);
+        submit.setVisibility(Button.GONE);
 
 
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                name.setVisibility(EditText.VISIBLE);
+                height.setVisibility(EditText.VISIBLE);
+                weight.setVisibility(EditText.VISIBLE);
+                age.setVisibility(EditText.VISIBLE);
+                radioGroup.setVisibility(RadioGroup.VISIBLE);
+
                 submit.setVisibility(Button.VISIBLE);
-                editButton.setVisibility(Button.INVISIBLE);
-                boolean bdis=true;
-                name.setEnabled(bdis);
-                height.setEnabled(bdis);
-                weight.setEnabled(bdis);
-                age.setEnabled(bdis);
-                radioButtonF.setEnabled(bdis);
-                radioButtonM.setEnabled(bdis);
-                spinnerwant.setEnabled(bdis);
+                editButton.setVisibility(Button.GONE);
+                namet.setVisibility(TextView.GONE);
+                heightt.setVisibility(TextView.GONE);
+                weightt.setVisibility(TextView.GONE);
+                aget.setVisibility(TextView.GONE);
+                radioGroupt.setVisibility(RadioGroup.GONE);
+                spinnerwant.setEnabled(true);
             }
         });
 
@@ -93,6 +103,15 @@ public class UserFragment extends Fragment {
             public void onClick(View v) {
 
 
+                submit.setVisibility(Button.GONE);
+
+                name.setVisibility(EditText.GONE);
+                height.setVisibility(EditText.GONE);
+                weight.setVisibility(EditText.GONE);
+                age.setVisibility(EditText.GONE);
+                radioGroup.setVisibility(RadioGroup.GONE);
+
+                editButton.setVisibility(Button.VISIBLE);
                 user.setUserName(name.getText().toString());
                 user.setHeight(Double.parseDouble(height.getText().toString()));
                 user.setWeight(Double.parseDouble(weight.getText().toString()));
@@ -117,18 +136,16 @@ public class UserFragment extends Fragment {
                 }
 
 
+
+                updateUi(user, name, height, weight, age, radioButtonM, radioButtonF, spinnerwant, bmiText, bmrText,namet,heightt,weightt,aget,radioGroupt);
                 DietLab.get().writeDownDB();
-                submit.setVisibility(Button.INVISIBLE);
-                editButton.setVisibility(Button.VISIBLE);
-                updateUi(user, name, height, weight, age, radioButtonM, radioButtonF, spinnerwant, bmiText, bmrText);
 
                 boolean bdis=false;
-                name.setEnabled(bdis);
-                height.setEnabled(bdis);
-                weight.setEnabled(bdis);
-                age.setEnabled(bdis);
-                radioButtonF.setEnabled(bdis);
-                radioButtonM.setEnabled(bdis);
+                namet.setVisibility(TextView.VISIBLE);
+                heightt.setVisibility(TextView.VISIBLE);
+                weightt.setVisibility(TextView.VISIBLE);
+                aget.setVisibility(TextView.VISIBLE);
+                radioGroupt.setVisibility(TextView.VISIBLE);
                 spinnerwant.setEnabled(bdis);
 
             }
@@ -137,7 +154,8 @@ public class UserFragment extends Fragment {
         return view;
     }
 
-    private void updateUi(User user, EditText name, EditText height, EditText weight, EditText age, RadioButton radioButtonM, RadioButton radioButtonF, Spinner spinnerwant,TextView bmiText,TextView bmrText) {
+    private void updateUi(User user, EditText name, EditText height, EditText weight, EditText age, RadioButton radioButtonM, RadioButton radioButtonF, Spinner spinnerwant,TextView bmiText,TextView bmrText
+    ,TextView namet,TextView heightt,TextView weightt,TextView aget,TextView radioGroupt) {
 
         //updateUI
         user.updateUserCalculation();
@@ -166,6 +184,19 @@ public class UserFragment extends Fragment {
         }else
         {
             radioButtonF.setChecked(true);
+        }
+
+
+        namet.setText(user.getUserName());
+        heightt.setText(String.format("%s", user.getHeight()));
+        weightt.setText(String.format("%s", user.getWeight()));
+        aget.setText(String.format("%d", user.getAge()));
+        if(user.isMale())
+        {
+            radioGroupt.setText("Male");
+        }else
+        {
+            radioGroupt.setText("Female");
         }
     }
 

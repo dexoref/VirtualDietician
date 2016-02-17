@@ -43,6 +43,9 @@ public class User {
         mUserName="Sylveryte";
         isMale=true;
         mWantTo=NormalUserWeight;
+        mWeight=56;
+        mHeight=173;
+        updateUserCalculation();
     }
 
     public void updateUserCalculation()

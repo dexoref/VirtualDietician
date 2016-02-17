@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_margin="8dp"
+    style="@style/liststyle"
+    android:layout_height="wrap_content">
+<LinearLayout
               android:orientation="vertical"
               android:theme="@style/listTheme"
-              android:background="@color/whiteBack"
+              android:clickable="true"
+
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               >
 
+
+
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_height="wrap_content">
 
@@ -19,6 +28,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:layout_gravity="end"
+        android:textColor="@color/whiteBack"
         android:id="@+id/textViewDietTitle"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
@@ -42,6 +52,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
+        android:textColor="@color/whiteBack"
         android:id="@+id/textDlb"/>
     <TextView
         android:layout_width="wrap_content"
@@ -57,3 +68,4 @@
         android:text="Medium Text"
         android:id="@+id/textVen"/>
 </LinearLayout>
+    </FrameLayout>

@@ -76,6 +76,7 @@ public class DietPlan {
 
     private void setList(int dlb)
     {
+        bucket.clear();
         Collections.shuffle(mDiets);
         for (int i=0;i<mDiets.size();i++)
         {

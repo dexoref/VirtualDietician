@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
               android:orientation="vertical"
               android:gravity="center_vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:weightSum="1">
+              android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_weight="0.29">
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/editicon2"
-            android:text="edit"
-            android:id="@+id/editButton"
-            android:layout_gravity="right"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:background="#847eeeee"/>
+        android:layout_height="wrap_content"
+        style="@style/backstyle">
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:focusable="true"
             android:text="@string/userDetails"
             android:textStyle="bold"
             android:textSize="40sp"
@@ -33,6 +27,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:id="@+id/textView5"/>
+
+
+
     </RelativeLayout>
 
 
@@ -41,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="20dp"
+        style="@style/backstyle"
         android:layout_marginRight="20dp"
         android:columnCount="3"
         android:rowCount="9">
@@ -59,7 +57,17 @@
             android:id="@+id/editTextUserName"
             android:inputType="textPersonName"
             android:layout_row="0"
-            android:layout_column="1"/>
+            android:layout_column="1"
+            android:visibility="gone"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextUserNamet"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:layout_row="0"
+            android:layout_column="1">
+        </TextView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,6 +82,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText_height"
             android:inputType="number|numberSigned|numberDecimal"
+            android:visibility="gone"
+            android:layout_row="1"
+            android:layout_column="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_heightt"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
             android:layout_row="1"
             android:layout_column="1"/>
 
@@ -90,8 +107,18 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText_weight"
             android:inputType="number|numberSigned|numberDecimal"
+            android:visibility="gone"
             android:layout_row="2"
             android:layout_column="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_weightt"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:layout_row="2"
+            android:layout_column="1"/>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -107,34 +134,26 @@
             android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:id="@+id/editText_age"
+            android:visibility="gone"
             android:inputType="number"
             android:layout_row="3"
             android:layout_column="1"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="vmi remarks"
-            android:id="@+id/bmiRemark"
-            android:layout_marginTop="8dp"
-            android:textStyle="bold"
-            android:layout_row="6"
+            android:id="@+id/editText_aget"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:layout_row="3"
             android:layout_column="1"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:id="@+id/bmrRemark"
-            android:text="bmr remaerskdsda"
-            android:layout_row="7"
-            android:layout_column="1"/>
+
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/radioGroupMaleFemale"
+            android:visibility="gone"
             android:layout_gravity="center_vertical"
             android:layout_row="4"
             android:layout_column="1">
@@ -155,17 +174,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/radioGroupMaleFemalet"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:layout_row="4"
+            android:layout_column="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/gender"
             android:layout_row="4"
             android:layout_column="0"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/iWantTo"
-            android:layout_gravity="center"
-            android:layout_row="5"
-            android:layout_column="0"/>
+
 
         <Spinner
             android:layout_width="wrap_content"
@@ -176,14 +197,48 @@
             android:layout_column="1"/>
 
     </GridLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        style="@style/backstyle"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmiRemark"
+            android:text="fdsh"
+            android:textStyle="bold"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:id="@+id/submitButton"
-        android:layout_height="wrap_content"
-        android:text="@string/submit"
-        android:layout_margin="20dp"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="sd"
+            android:id="@+id/bmrRemark"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/submitButton"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:visibility="gone"
+            />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="edit"
+            android:id="@+id/editButton"/>
+    </LinearLayout>
+
+
 
 
 </LinearLayout>
+</ScrollView>

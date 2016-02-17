@@ -18,7 +18,17 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat"/>
 
     <style name="dietTheme" parent="AppTheme">
-
     </style>
+    <style name="backstyle" parent="Base.Theme.AppCompat.Light">
+        <item name="android:background">@drawable/layoutbackground</item>
+        <item name="android:padding">20dp</item>
+    </style>
+    <style name="liststyle" parent="Base.Theme.AppCompat.Light">
+        <item name="android:textColor">@color/whiteBack</item>
+        <item name="android:background">@drawable/list_good</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+
 
 </resources>

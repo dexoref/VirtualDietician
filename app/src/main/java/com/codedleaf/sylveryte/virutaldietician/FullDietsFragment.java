@@ -111,7 +111,7 @@ public class FullDietsFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     DietLab.get().getDiets().remove(diet);
-                    Toast.makeText(getActivity(),"Diet Deleted Forever",Toast.LENGTH_SHORT);
+                    Toast.makeText(getActivity(),"Diet Deleted Forever",Toast.LENGTH_SHORT).show();
                 }
             });
 
