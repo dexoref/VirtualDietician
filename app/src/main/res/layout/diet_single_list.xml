@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+              android:theme="@style/listTheme"
+              android:background="@color/whiteBack"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:id="@+id/textViewDietTitle"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
@@ -25,7 +28,7 @@
             android:layout_width="wrap_content"
             android:text="Delete"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:id="@+id/deleteButtonBro"
             android:visibility="gone"
             android:layout_alignParentTop="true"
@@ -53,13 +56,4 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/textVen"/>
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_below="@+id/klass_list_text_extra_info"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
 </LinearLayout>
