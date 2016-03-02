@@ -22,6 +22,12 @@
                 style="@style/backstyle"
                 android:textSize="60sp"
                 android:id="@+id/textView6"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/generateButton"
+                android:layout_height="wrap_content"
+                android:text="@string/generateNewPlan"/>
+            
 
         </LinearLayout>
         <TableLayout

@@ -18,4 +18,5 @@
     <string name="userName">User Name</string>
     <string name="addDiet">Add Diet</string>
     <string name="iWantTo">You?</string>
+    <string name="generateNewPlan">Generate New Plan</string>
 </resources>

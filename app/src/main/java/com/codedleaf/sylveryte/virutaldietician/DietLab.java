@@ -39,21 +39,44 @@ public class DietLab {
     private DietLab(Context context)
     {
         mContext=context.getApplicationContext();
-        mDiets=new ArrayList();
+        mDatabase=new DietBaseHelper(mContext).getWritableDatabase();
+        getDiets();
     }
 
     public void initiateDB()
     {
-        BaseDatabaseFile.generateIntialDB();
-        mDatabase=new DietBaseHelper(mContext).getWritableDatabase();
+        if(mDiets.size()==0)
+        {
+            BaseDatabaseFile.generateIntialDB();
+
+        }
+    }
+
+    public SQLiteDatabase getDatabase() {
+        return mDatabase;
     }
 
     public List getDiets() {
+
+        mDiets=new ArrayList<>();
+        DietCursorWrapper cursor=queryDiets(null,null);
+
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                mDiets.add(cursor.getDiet());
+                cursor.moveToNext();
+            }
+        }finally {
+            cursor.close();
+        }
+
         return mDiets;
     }
 
-    public void addDiet(Diet diet) {
+    public void add(Diet diet) {
         mDiets.add(diet);
+        mDatabase.insert(DietTable.NAME, null, getContentValues(diet));
     }
 
     private static ContentValues getContentValues(Diet diet)
@@ -68,6 +91,7 @@ public class DietLab {
         values.put(DietTable.cols.USED, diet.isUsed() ? 1 : 0);
         return values;
     }
+
     private DietCursorWrapper queryDiets(String whereClause, String[] whereArgs) {
         Cursor cursor = mDatabase.query(
                 DietTable.NAME,
@@ -81,18 +105,17 @@ public class DietLab {
         return new DietCursorWrapper(cursor);
     }
 
-    public void writeDownDB()
+    public void deleteDiet(Diet diet)
     {
-        //clear db
-        mDatabase.execSQL("delete from "+DietTable.NAME);
-        mDatabase.execSQL("vacuum");
+        mDiets.remove(diet);
+        mDatabase.delete(DietTable.NAME,DietTable.NAME + " =?",
+                new String[]{diet.getDietName()});
 
-        for(Diet diet:mDiets)
-        {
-            mDatabase.insert(DietTable.NAME,null,getContentValues(diet));
-        }
+    }
 
 
+    public void writeDownUserDB()
+    {
         ///USer writing
         mDatabase.execSQL("delete from " + UserTable.NAME);
         mDatabase.execSQL("vacuum");
@@ -104,27 +127,13 @@ public class DietLab {
         userValues.put(UserTable.cols.HEIGHT,user.getHeight());
         userValues.put(UserTable.cols.WEIGHT,user.getWeight());
         userValues.put(UserTable.cols.GENDER,user.isMale()?0:1);
-        userValues.put(UserTable.cols.WANTTO,user.getWantTo());
-
-        mDatabase.insert(UserTable.NAME,null,userValues);
-
+        userValues.put(UserTable.cols.WANTTO, user.getWantTo());
+        mDatabase.insert(UserTable.NAME, null, userValues);
     }
 
 
     public void readDB()
     {
-        DietCursorWrapper cursor=queryDiets(null,null);
-
-        try {
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                mDiets.add(cursor.getDiet());
-                cursor.moveToNext();
-            }
-        }finally {
-            cursor.close();
-        }
-
         Cursor cursorUser=mDatabase.query(
                 UserTable.NAME,
                 null, // Columns - null selects all columns
@@ -175,12 +184,4 @@ public class DietLab {
         }
         return null;
     }
-
-    public void getBreakfast()
-    {
-
-    }
-
-
-
 }

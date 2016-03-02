@@ -1,7 +1,6 @@
 package com.codedleaf.sylveryte.virutaldietician;
 
 import android.app.ProgressDialog;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -153,7 +151,7 @@ public class UserFragment extends Fragment {
                 aget.setVisibility(TextView.VISIBLE);
                 radioGroupt.setVisibility(TextView.VISIBLE);
                 spinnerwant.setEnabled(bdis);
-                DietLab.get().writeDownDB();
+                DietLab.get().writeDownUserDB();
 
                 dialog.hide();
 

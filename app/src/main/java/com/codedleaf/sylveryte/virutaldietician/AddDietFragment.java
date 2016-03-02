@@ -62,11 +62,10 @@ public class AddDietFragment extends Fragment {
                 Diet diet = new Diet(editTextTitle.getText().toString(),
                         Double.parseDouble(editTextCals.getText().toString()), dlb, ven
                 );
-                DietLab.get().addDiet(diet);
+                DietLab.get().add(diet);
 
                 Toast.makeText(getActivity(), "Record Added", Toast.LENGTH_SHORT).show();
                 button.setEnabled(false);
-                DietLab.get().writeDownDB();
             }
         });
 

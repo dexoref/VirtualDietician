@@ -6,12 +6,12 @@ import java.util.List;
  * Created by sylveryte on 15/2/16.
  */
 public class BaseDatabaseFile {
-    private List<Diet> mDiets;
+    private DietLab mDiets;
     private static BaseDatabaseFile sBaseDatabaseFile;
 
     private BaseDatabaseFile()
     {
-        mDiets=DietLab.get().getDiets();
+        mDiets= DietLab.get();
         generateList();
     }
 

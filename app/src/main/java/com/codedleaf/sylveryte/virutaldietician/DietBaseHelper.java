@@ -32,13 +32,17 @@ public class DietBaseHelper extends SQLiteOpenHelper {
                         DietTable.cols.USED +
                         ")"
         );
-        db.execSQL("create table " + DietPlanSchema.DietPlanTable.NAME + "(" +
+        db.execSQL("create table " + DietPlanTableSchema.DietTable.NAME + "(" +
                         " _id integer primary key autoincrement, " +
-                        DietPlanSchema.DietPlanTable.cols.BREAKFAST + ", " +
-                        DietPlanSchema.DietPlanTable.cols.LUNCH + ", " +
-                        DietPlanSchema.DietPlanTable.cols.DINNER +
+                        DietTable.cols.UUID + ", " +
+                        DietTable.cols.TITLE + ", " +
+                        DietTable.cols.CALORIES + ", " +
+                        DietTable.cols.DLB + ", " +
+                        DietTable.cols.VEN + ", " +
+                        DietTable.cols.USED +
                         ")"
         );
+
         db.execSQL("create table " + UserTableSchema.UserTable.NAME + "(" +
                         " _id integer primary key autoincrement, " +
                         UserTableSchema.UserTable.cols.NAME + ", " +

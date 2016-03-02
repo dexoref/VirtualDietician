@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -32,8 +33,15 @@ public class DietPlanFragment extends Fragment {
         View view=inflater.inflate(R.layout.diet_plan_fragment_layout,container,false);
         mContainer=container;
         final TableLayout table=(TableLayout)view.findViewById(R.id.tabledietplan);
+        Button generateButton=(Button)view.findViewById(R.id.generateButton);
 
-
+        generateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DietPlan.getInstance().generatePlan();
+                updateUI(table);
+            }
+        });
 
         updateUI(table);
 
@@ -46,7 +54,12 @@ public class DietPlanFragment extends Fragment {
 
         mTableIndex=0;
         DietPlan dietPlan=DietPlan.getInstance();
-        dietPlan.generatePlan();
+
+
+        //dietPlan.generatePlan();
+
+        table.removeAllViews();
+
         setTitle("Breakfast", table);
         setViews(dietPlan.getBreakfast(), table);
         setTitle("Lunch", table);

@@ -42,6 +42,7 @@ public class User {
     {
         mUserName="Sylveryte";
         isMale=true;
+        mAge=18;
         mWantTo=NormalUserWeight;
         mWeight=56;
         mHeight=173;
