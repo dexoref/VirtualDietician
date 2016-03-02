@@ -23,6 +23,7 @@
         <item name="android:background">@drawable/layoutbackground</item>
         <item name="android:padding">20dp</item>
     </style>
+
     <style name="liststyle" parent="Base.Theme.AppCompat.Light">
         <item name="android:textColor">@color/whiteBack</item>
         <item name="android:background">@drawable/list_good</item>

@@ -1,12 +1,8 @@
 package com.codedleaf.sylveryte.virutaldietician;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
 /**
  * Created by sylveryte on 14/2/16.
@@ -45,11 +41,9 @@ public class DietPlan {
     public List<Diet> getMlunch() {
         return mlunch;
     }
-
     public List<Diet> getBreakfast() {
         return mBreakfast;
     }
-
     public void generatePlan() {
         mOne3 = ((int) User.getInstance().getBMR()) / 3;
 
@@ -60,8 +54,6 @@ public class DietPlan {
         setList(Diet.DINNER);
         finalList(mDinner);
     }
-
-
     private void finalList(List<Diet> cup)
     {
         for (int i=0,t=0;i<bucket.size()&&t<=mOne3;i++)
@@ -72,38 +64,22 @@ public class DietPlan {
             diet.setIsUsed(true);
             cup.add(diet);
         }
+        bucket.clear();
     }
 
     private void setList(int dlb)
     {
-        bucket.clear();
         Collections.shuffle(mDiets);
         for (int i=0;i<mDiets.size();i++)
         {
             Diet diet=mDiets.get(i);
-            if (!diet.isUsed())
-            {
                 if (diet.getDlb()==dlb)
                 {
                     diet.increaseRank();
                 }
                 bucket.add(diet);
-            }
         }
         Collections.sort(bucket);
-    }
-
-
-    private void generateDinner() {
-        mLab.getBreakfast();
-    }
-
-    private void generateLunch() {
-
-    }
-
-    private void generateBreakfast() {
-
     }
 
 }

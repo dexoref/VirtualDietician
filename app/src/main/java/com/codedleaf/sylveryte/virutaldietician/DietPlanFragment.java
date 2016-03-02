@@ -44,9 +44,9 @@ public class DietPlanFragment extends Fragment {
 
     private void updateUI(TableLayout table) {
 
-        table.clearAnimation();
         mTableIndex=0;
         DietPlan dietPlan=DietPlan.getInstance();
+        dietPlan.generatePlan();
         setTitle("Breakfast", table);
         setViews(dietPlan.getBreakfast(), table);
         setTitle("Lunch", table);

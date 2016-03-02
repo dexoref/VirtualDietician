@@ -1,5 +1,6 @@
 package com.codedleaf.sylveryte.virutaldietician;
 
+import android.app.ProgressDialog;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -103,6 +104,12 @@ public class UserFragment extends Fragment {
             public void onClick(View v) {
 
 
+                ProgressDialog dialog=new ProgressDialog(getActivity());
+                dialog.setMessage("Calculating!");
+                dialog.setCancelable(false);
+                dialog.setInverseBackgroundForced(false);
+                dialog.show();
+
                 submit.setVisibility(Button.GONE);
 
                 name.setVisibility(EditText.GONE);
@@ -138,7 +145,6 @@ public class UserFragment extends Fragment {
 
 
                 updateUi(user, name, height, weight, age, radioButtonM, radioButtonF, spinnerwant, bmiText, bmrText,namet,heightt,weightt,aget,radioGroupt);
-                DietLab.get().writeDownDB();
 
                 boolean bdis=false;
                 namet.setVisibility(TextView.VISIBLE);
@@ -147,6 +153,9 @@ public class UserFragment extends Fragment {
                 aget.setVisibility(TextView.VISIBLE);
                 radioGroupt.setVisibility(TextView.VISIBLE);
                 spinnerwant.setEnabled(bdis);
+                DietLab.get().writeDownDB();
+
+                dialog.hide();
 
             }
         });
