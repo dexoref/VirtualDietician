@@ -17,7 +17,6 @@ public class Diet implements Comparable{
     public static final int BREAKFAST=41;
     public static final int LUNCH=42;
     public static final int DINNER=43;
-    public static final int BREAKFASTLUNCH=44;
     public static final int ANYTIME=45;
     public static final int VEGETARIAN=51;
     public static final int EGGETARIAN=52;
