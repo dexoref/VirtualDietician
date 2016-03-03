@@ -108,7 +108,7 @@ public class DietLab {
     public void deleteDiet(Diet diet)
     {
         mDiets.remove(diet);
-        mDatabase.delete(DietTable.NAME,DietTable.NAME + " =?",
+        mDatabase.delete(DietTable.NAME,DietTable.cols.TITLE + " =?",
                 new String[]{diet.getDietName()});
 
     }

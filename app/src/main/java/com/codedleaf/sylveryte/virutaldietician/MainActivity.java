@@ -117,7 +117,8 @@ public class MainActivity extends AppCompatActivity
             startFragment(FullDietsFragment.newInstance());
         } else if (id == R.id.user_info_edit)  {
             startFragment(UserFragment.newInstance());
-        }
+        }else if(id==R.id.shopping_list)
+            startFragment(ShoppingFragment.newInstance());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -53,6 +53,15 @@ public class DietBaseHelper extends SQLiteOpenHelper {
                         UserTableSchema.UserTable.cols.WANTTO +
                         ")"
         );
+
+        db.execSQL("create table " + ShoppingSchema.NAME + "(" +
+                        " _id integer primary key autoincrement, " +
+                        ShoppingSchema.Cols.ITEMNAME + ", " +
+                        ShoppingSchema.Cols.EXTRA + ", " +
+                        ShoppingSchema.Cols.PURCHASED + ", " +
+                        ShoppingSchema.Cols.QUANTITY +
+                        ")"
+        );
     }
 
     @Override
