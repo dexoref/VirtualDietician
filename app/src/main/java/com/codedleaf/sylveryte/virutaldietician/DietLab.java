@@ -128,6 +128,7 @@ public class DietLab {
         userValues.put(UserTable.cols.WEIGHT,user.getWeight());
         userValues.put(UserTable.cols.GENDER,user.isMale()?0:1);
         userValues.put(UserTable.cols.WANTTO, user.getWantTo());
+        userValues.put(UserTable.cols.IAM, user.getVEN());
         mDatabase.insert(UserTable.NAME, null, userValues);
     }
 
@@ -166,6 +167,8 @@ public class DietLab {
 
                 user.setWantTo(cursorUser.getShort(
                         cursorUser.getColumnIndex(UserTable.cols.WANTTO)));
+                user.setVEN(cursorUser.getShort(
+                        cursorUser.getColumnIndex(UserTable.cols.IAM)));
             }
         }finally {
             cursorUser.close();

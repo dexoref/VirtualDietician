@@ -14,6 +14,7 @@ public class UserTableSchema {
             public static final String AGE="age";
             public static final String GENDER="gender";
             public static final String WANTTO="wantto";
+            public static final String IAM="iam";
 
         }
     }

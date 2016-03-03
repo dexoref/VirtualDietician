@@ -19,9 +19,5 @@
     <string name="addDiet">Add Diet</string>
     <string name="iWantTo">You?</string>
     <string name="generateNewPlan">Generate New Plan</string>
-    <string name="tips">1 Don\'t smoke.\n\
-                        2 Be good\n\
-                        3 I\'m proud of you\n\
-                        4 Excercise more\n\
-                        5 Hello lajsfdkjdsa dasklj vklj das kjf;lkwajdf;a we;lkfj a;ds;lfl ka;k dsfl;haw;lehf;l kakwdfihih</string>
+    <string name="tips"></string>
 </resources>

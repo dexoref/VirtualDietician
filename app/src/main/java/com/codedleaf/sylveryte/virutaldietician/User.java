@@ -26,6 +26,7 @@ public class User {
     private double mBMI;
     private short mBMIRemark;
     private short mWantTo;
+    private short mVEN;
     private static User sUser;
     private String mBMIStringRemark;
 
@@ -97,6 +98,7 @@ public class User {
             mBMIStringRemark= "Really :/ this much weight, your bmi is " + mBMI;
         }
     }
+    
 
     public String getBMIStringRemark() {
         return mBMIStringRemark;
@@ -110,6 +112,13 @@ public class User {
         return 10 * mWeight + 6.25 * mHeight - 5 * mAge + 5;
     }
 
+    public short getVEN() {
+        return mVEN;
+    }
+
+    public void setVEN(short VEN) {
+        mVEN = VEN;
+    }
 
     public short getWantTo() {
         return mWantTo;

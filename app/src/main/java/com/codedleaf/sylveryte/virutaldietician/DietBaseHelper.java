@@ -50,6 +50,7 @@ public class DietBaseHelper extends SQLiteOpenHelper {
                         UserTableSchema.UserTable.cols.WEIGHT + ", " +
                         UserTableSchema.UserTable.cols.AGE + ", " +
                         UserTableSchema.UserTable.cols.GENDER + ", " +
+                        UserTableSchema.UserTable.cols.IAM + ", " +
                         UserTableSchema.UserTable.cols.WANTTO +
                         ")"
         );

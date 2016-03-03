@@ -1,5 +1,6 @@
 package com.codedleaf.sylveryte.virutaldietician;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -40,8 +41,17 @@ public class DietPlanFragment extends Fragment {
         generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressDialog dialog=new ProgressDialog(getActivity());
+                dialog.setMessage("Generating Plan");
+                dialog.setCancelable(false);
+                dialog.setInverseBackgroundForced(false);
+                dialog.show();
+
+                ShoppingLab.get().clearShoppinglist();
                 DietPlan.getInstance().generatePlan();
                 updateUI(table);
+
+                dialog.hide();
             }
         });
 

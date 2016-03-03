@@ -70,12 +70,20 @@ public class ShoppingLab {
         values.put(ShoppingSchema.Cols.ITEMNAME,item.getItemName());
         values.put(ShoppingSchema.Cols.EXTRA,item.getExtraInfo());
         values.put(ShoppingSchema.Cols.QUANTITY, item.getQuantity());
-        values.put(ShoppingSchema.Cols.PURCHASED,item.isPurcahsed()?1:0);
+        values.put(ShoppingSchema.Cols.PURCHASED, item.isPurcahsed() ? 1 : 0);
         return values;
+    }
+
+    public void clearShoppinglist() {
+        getItems();
+        mItems.clear();
+        mDatabase.execSQL("delete from " + ShoppingSchema.NAME);
+        mDatabase.execSQL("vacuum");
     }
 
     public void addShoppingItem(ShoppingItem item)
     {
+        getItems();
         mItems.add(item);
         mDatabase.insert(ShoppingSchema.NAME, null, getContentValues(item));
     }

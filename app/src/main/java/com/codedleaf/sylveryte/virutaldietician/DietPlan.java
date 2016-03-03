@@ -167,6 +167,11 @@ public class DietPlan {
             mPlan.add(d);
         }
 
+        for (Diet d:mPlan)
+        {
+            ShoppingLab.get().addShoppingItem(new ShoppingItem(d.getDietName(),1, String.format("have %s calories", d.getCalories())));
+        }
+
         writeDownPlanDB();
     }
 
@@ -197,11 +202,12 @@ public class DietPlan {
         for (int i=0;i<pl.size();i++)
         {
             Diet diet=pl.get(i);
-                if (diet.getDlb()==dlb)
-                {
+            if(diet.getVen()<=User.getInstance().getVEN()) {
+                if (diet.getDlb() == dlb) {
                     diet.increaseRank();
                 }
                 bucket.add(diet);
+            }
         }
         Collections.sort(bucket);
     }
