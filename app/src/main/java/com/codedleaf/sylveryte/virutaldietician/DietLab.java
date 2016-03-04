@@ -9,6 +9,8 @@ import com.codedleaf.sylveryte.virutaldietician.DietTableSchema.DietTable;
 import com.codedleaf.sylveryte.virutaldietician.UserTableSchema.UserTable;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -61,6 +63,9 @@ public class DietLab {
         mDiets=new ArrayList<>();
         DietCursorWrapper cursor=queryDiets(null,null);
 
+        if(mDiets.size()<6)
+        {
+
         try {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
@@ -69,7 +74,9 @@ public class DietLab {
             }
         }finally {
             cursor.close();
-        }
+        }}
+
+        Collections.shuffle(mDiets);
 
         return mDiets;
     }

@@ -19,5 +19,28 @@
     <string name="addDiet">Add Diet</string>
     <string name="iWantTo">You?</string>
     <string name="generateNewPlan">Generate New Plan</string>
-    <string name="tips"></string>
+    <string name="tips">:) ;)</string>
+    <string name="headone">1. SNACK, BUT SMARTLY</string>
+    <string name="bodyone">Grazing between meals used to be on the weight-loss hit list. But nutritionists now know that it\'s better to satisfy a craving with healthy grub than ignore it and risk a junk-food binge later. The best picks are filling, protein-packed snacks, such as one stick of string cheese, a tablespoon of peanut butter on a piece of fruit, or a medium-size bowl of edamame.</string>
+    <string name="headtwo">2. TURN OFF THE TV</string>
+    <string name="bodytwo">Dining while viewing can make you take in 40 percent more calories than usual, reports a new study. And texting, driving, or any other distracting activity during a meal can also result in your eating too much. Instead, make each meal something you put on a plate and sit down to, even if you\'re eating solo.</string>
+    <string name="headthree">3. STEP ON THE SCALE DAILY</string>
+    <string name="bodythree">If your regular weight increases several days in a row, it\'s a red flag letting you know you need to cut back a little or beef up your workouts slightly.</string>
+
+    <string name="headfour">4. SCULPT THREE TIMES A WEEK</string>
+    <string name="bodyfour">Doing 5 minutes each of push-ups, lunges, and squats (in 30-second intervals) will help build and maintain muscle mass. The more muscle you have, the higher your metabolism will be, so you\'ll torch more calories as you go about your day.</string>
+
+    <string name="headfive">5. REACH FOR YOUR CELL</string>
+    <string name="bodyfive">Next time your mind gets stuck on a certain food, call a friend and redirect your brain by asking how her day\'s going. Research shows that cravings only last about 5 minutes, so by the time you hang up, the urge to devour junk will have subsided.</string>
+    <string name="headsiz">6. EAT A BIG, BALANCED BREAKFAST</string>
+    <string name="bodsix">An a.m. meal made up mostly of carbs and protein with some fat keeps blood-sugar levels steady and hunger pangs away so you\'re not susceptible to pigging out come lunch, studies show. Opt for something satisfying for your stomach and taste buds  like egg whites and turkey bacon with whole-wheat toast.</string>
+    <string name="headseven">7. WATCH THE BOOZE</string>
+    <string name="bodyseven">One innocent-looking margarita or cosmopolitan can rack up hundreds of calories that do nothing to quench your appetite. Treat yourself just on the weekends and cut back somewhere else or stick to a glass of wine, light beer, or vodka and soda  three drinks that each have about 100 calories per serving.</string>
+    <string name="headeight">8. HAVE FRUIT TWICE A DAY</string>
+    <string name="bodyeight">Fruit has no fat and is mostly water, so it\'ll fill you up while leaving less room on your plate (and in your stomach) for high-cal fare. Don\'t freak about fruit\'s carb count  we\'re talking the good kind of carbohydrates that contain lots of healthy fiber.</string>
+    <string name="headnicn">9. STAY ASLEEP LONGER</string>
+    <string name="bodyninc">Getting to bed just 30 minutes earlier and waking up 30 minutes later than you normally do can help you make better food choices, researchers report. Also, when you\'re well-rested, you\'re less prone to snacking out of fatigue or stress.</string>
+    <string name="headten">10. VISUALIZE YOURSELF THIN</string>
+    <string name="bodyten">When you feel your willpower breaking, conjure up a mental picture of yourself when you looked and felt slim. The visual motivation keeps you focused on your goal weight and reminds you that it is attainable, since you\'ve achieved it before.</string>
+    <string name="tipauthor">SOURCES: NUTRITION AND WEIGHT-REDUCTION SPECIALIST JANA KLAUER, MD, AUTHOR OF THE PARK AVENUE NUTRITIONIST\'S PLAN; NATALIE ROSENSOCK, RD; CERTIFIED PERSONAL TRAINER JASON WALSH</string>
 </resources>

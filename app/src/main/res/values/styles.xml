@@ -29,6 +29,9 @@
         <item name="android:background">@drawable/list_good</item>
         <item name="android:padding">20dp</item>
     </style>
+    <style name="pad">
+        <item name="android:padding">20dp</item>
+    </style>
 
 
 

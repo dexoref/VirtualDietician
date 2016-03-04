@@ -186,7 +186,6 @@ public class DietPlan {
             Diet diet=bucket.get(i);
             t+=diet.getCalories();
             mTotalCal+=diet.getCalories();
-            diet.setIsUsed(true);
             cup.add(diet);
         }
         bucket.clear();
@@ -204,6 +203,7 @@ public class DietPlan {
             Diet diet=pl.get(i);
             if(diet.getVen()<=User.getInstance().getVEN()) {
                 if (diet.getDlb() == dlb) {
+                    diet.increaseRank();
                     diet.increaseRank();
                 }
                 bucket.add(diet);

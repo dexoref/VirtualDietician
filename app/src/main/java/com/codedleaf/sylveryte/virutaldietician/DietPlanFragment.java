@@ -89,34 +89,7 @@ public class DietPlanFragment extends Fragment {
             Diet diet=diets.get(i);
 
             View itemView=layoutInflater.inflate(R.layout.diet_single_list,mContainer,false);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new AlertDialog.Builder(getActivity())
-                            .setTitle("Change this diet?")
-                            .setMessage("Are you sure you want to Change?")
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    
-                                    
-                                    //change code
-                                    // FIXME: 3/3/16 
-                                    
-                                }
-                            })
-                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    
-                                    
-                                    //do nothing
 
-                                }
-                            })
-                            .show();
-                }
-            });
             TextView mTitleTextView=(TextView)itemView.findViewById(R.id.textViewDietTitle);
             TextView mDlb=(TextView)itemView.findViewById(R.id.textDlb);
             TextView mVen=(TextView)itemView.findViewById(R.id.textVen);
